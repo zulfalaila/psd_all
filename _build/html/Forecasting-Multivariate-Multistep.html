@@ -60,7 +60,6 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Forecasting-Multivariate-Multistep';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Forecasting-Univariate" href="Forecasting-Univariate.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,6 +122,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -178,12 +179,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Forecasting-Multivariate.html"><strong>Forecasting Multivariate</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="Forecasting-Univariate.html"><strong>Forecasting-Univariate</strong></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Forecasting-Multivariate-Multistep</strong></a></li>
-</ul>
-
+        
     </div>
 </nav></div>
     </div>
@@ -379,6 +375,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-timeseries-kecepatan-angin-multi-step">Prediksi Timeseries Kecepatan Angin Multi-Step</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">Data Understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-bussines-understanding">Tujuan (Bussines Understanding)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informasi-atribut">Informasi Atribut</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">Import Library</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-data">Menampilkan Data</a></li>
@@ -403,7 +400,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-scaling-of-the-predicted-values">Inverse Scaling of the predicted values</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-error">Checking Error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-error">Checking Error</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi">Evaluasi</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -429,6 +429,10 @@ document.write(`
 <h2>Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h2>
 <p>Prediksi kecepatan angin dengan presisi tinggi dan keandalan yang baik adalah tantangan bagi para ahli meteorologi. Angin kencang akibat badai konvektif menyebabkan kerusakan yang signifikan (kerusakan hutan skala besar, pemadaman listrik, kerusakan bangunan/rumah, dll.). Peristiwa konvektif seperti badai petir, tornado, serta hujan es besar dan angin kencang merupakan bahaya alam yang berpotensi mengganggu kehidupan sehari-hari, terutama di daerah dengan medan yang kompleks yang mendukung terjadinya konveksi. Bahkan peristiwa konvektif biasa dapat menghasilkan angin kencang yang menyebabkan kerusakan fatal dan mahal. Oleh karena itu, prediksi kecepatan angin adalah tugas penting untuk memberikan peringatan dini tentang cuaca ekstrem. Dataset ini berisi respons dari sensor cuaca yang mengumpulkan berbagai variabel cuaca seperti suhu dan curah hujan.</p>
 <p>Dataset berasal dari kaggle <a class="reference external" href="https://www.kaggle.com/datasets/fedesoriano/wind-speed-prediction-dataset">https://www.kaggle.com/datasets/fedesoriano/wind-speed-prediction-dataset</a>, yang memiliki 9 fitur. Berisi 6.574 data harian rata-rata yang berasal dari lima sensor variabel cuaca yang terintegrasi di sebuah stasiun meteorologi. Perangkat ini ditempatkan di area terbuka yang cukup kosong pada ketinggian 21 meter. Data dicatat dari Januari 1961 hingga Desember 1978 (selama 17 tahun). <strong>Ground truth</strong> berupa rata-rata harian presipitasi, suhu maksimum dan minimum, serta suhu minimum rumput juga disediakan.</p>
+<section id="tujuan-bussines-understanding">
+<h3>Tujuan (Bussines Understanding)<a class="headerlink" href="#tujuan-bussines-understanding" title="Link to this heading">#</a></h3>
+<p>Tujuan dari penelitian ini adalah untuk menyediakan model prediksi kecepatan angin yang akurat guna memberikan peringatan dini terhadap cuaca ekstrem. Model ini diharapkan dapat membantu mengurangi risiko kerusakan infrastruktur, gangguan pada kehidupan sehari-hari, dan ancaman keselamatan manusia. Dalam sektor energi, prediksi kecepatan angin dapat mendukung pengelolaan pembangkit listrik berbasis energi angin secara lebih efisien. Informasi prediksi juga bermanfaat bagi pemerintah dan lembaga terkait untuk merencanakan mitigasi bencana dengan lebih baik. Selain itu, sektor transportasi dapat memanfaatkan prediksi ini untuk memastikan keselamatan operasional. Dengan model yang andal, dampak negatif dari angin kencang dapat diminimalkan secara efektif.</p>
+</section>
 <section id="informasi-atribut">
 <h3>Informasi Atribut<a class="headerlink" href="#informasi-atribut" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
@@ -1641,7 +1645,10 @@ MAE-E1D1 :  4.41346687861886, MAE-E2D2 :  4.4083681712897835
 </div>
 </div>
 </div>
+<section id="evaluasi">
+<h3>Evaluasi<a class="headerlink" href="#evaluasi" title="Link to this heading">#</a></h3>
 <p>Dari output di atas, kita dapat mengamati bahwa, dalam beberapa kasus, model <strong>E2D2</strong> menunjukkan kinerja yang lebih baik dibandingkan model <strong>E1D1</strong> dengan kesalahan yang lebih kecil. Melatih berbagai model dengan jumlah lapisan bertumpuk yang berbeda dan membuat model ensemble juga memberikan hasil yang baik.</p>
+</section>
 </section>
 </section>
 
@@ -1675,15 +1682,6 @@ MAE-E1D1 :  4.41346687861886, MAE-E2D2 :  4.4083681712897835
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="Forecasting-Univariate.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><strong>Forecasting-Univariate</strong></p>
-      </div>
-    </a>
 </div>
                 </footer>
               
@@ -1702,6 +1700,7 @@ MAE-E1D1 :  4.41346687861886, MAE-E2D2 :  4.4083681712897835
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-timeseries-kecepatan-angin-multi-step">Prediksi Timeseries Kecepatan Angin Multi-Step</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">Data Understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-bussines-understanding">Tujuan (Bussines Understanding)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informasi-atribut">Informasi Atribut</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">Import Library</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-data">Menampilkan Data</a></li>
@@ -1726,7 +1725,10 @@ MAE-E1D1 :  4.41346687861886, MAE-E2D2 :  4.4083681712897835
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-scaling-of-the-predicted-values">Inverse Scaling of the predicted values</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-error">Checking Error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-error">Checking Error</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi">Evaluasi</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

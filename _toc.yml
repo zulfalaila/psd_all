@@ -4,6 +4,6 @@
 format: jb-book
 root: intro
 chapters:
-- file: Forecasting-Multivariate
-- file: Forecasting-Univariate
-- file: Forecasting-Multivariate-Multistep
+- file: Project I
+- file: Project II
+- file: Project III
